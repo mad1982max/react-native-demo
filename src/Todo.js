@@ -1,13 +1,17 @@
 import React from 'react';
-import {View, Text, StyleSheet, TextInput, Button} from 'react-native'
+import {View, Text, StyleSheet, TextInput, TouchableOpacity} from 'react-native'
 
-export const Todo = ({todo}) => {
+export const Todo = ({todo, ondel}) => {
     return (
-        <View style = {styles.todo}>
-            <Text>
-                {todo.title}
-            </Text>
-        </View>
+        <TouchableOpacity 
+            onLongPress = {() => {ondel(todo.id); console.log('long pressed', todo.id)}}
+            onPress = {() => {console.log('pressed', todo.id)}}>
+            <View style = {styles.todo}>
+                <Text>
+                    {todo.title}
+                </Text>
+            </View>
+        </TouchableOpacity>        
     )
 }
 
